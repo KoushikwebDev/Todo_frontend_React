@@ -1,1 +1,1 @@
-export const BACKEND_URL = "https://todo-mern-app-backend.up.railway.app";
+export const BACKEND_URL = "https://todomernapp.up.railway.app/";
