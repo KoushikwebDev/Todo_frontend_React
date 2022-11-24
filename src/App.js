@@ -5,7 +5,7 @@ import MyTodosHeroSection from "./MyCompponents/MyTodosHeroSection";
 
 import Navbar from "./MyCompponents/Navbar";
 function App() {
-  console.log("app rendering");
+  // console.log("app rendering");
   return (
     <>
       <Navbar />

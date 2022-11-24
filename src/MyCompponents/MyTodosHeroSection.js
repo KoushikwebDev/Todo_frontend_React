@@ -6,6 +6,7 @@ const { REACT_APP_BACKEND_URL } = process.env;
 
 function MyTodosHeroSection() {
   const [todos, setTodos] = useState("");
+  // console.log(todos);
   const showTodo = async () => {
     // console.log( REACT_APP_BACKEND_URL);
     let { data } = await axios.get(`${REACT_APP_BACKEND_URL}/gettodo`);
@@ -69,7 +70,7 @@ function MyTodosHeroSection() {
 
   return (
     <>
-      {todos ? (
+      {todos.length ? (
         todos.map((todo) => (
           <div key={uuidv4()}>
             <div className=" pt-4 pb-1 flex justify-center pl-8 pr-8 flex-col place-items-center gap-3   sm:pl-12 sm:pr-12 md:pl-16 md:pr-16  lg:pl-24 lg:pr-24 ">
@@ -126,9 +127,14 @@ function MyTodosHeroSection() {
           </div>
         ))
       ) : (
-        <h1 className="text-lg mx-auto text-center pt-8 font-semibold">
-          No Data Found in Database.
-        </h1>
+        <div>
+          <h1 className="text-lg mx-auto text-center pt-8 font-semibold">
+            No Data Found in Database.
+          </h1>
+          <h1 className="text-lg mx-auto text-center pt-8 font-semibold">
+            Add Your Todos.
+          </h1>
+        </div>
       )}
     </>
   );
