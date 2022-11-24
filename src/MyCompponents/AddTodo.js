@@ -45,8 +45,10 @@ function AddTodo() {
     e.preventDefault();
     sendData();
 
-    setTitle("");
-    seTtask("");
+    if (title && task) {
+      setTitle("");
+      seTtask("");
+    }
   };
 
   return (
