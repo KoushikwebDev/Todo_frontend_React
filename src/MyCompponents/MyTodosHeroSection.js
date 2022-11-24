@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { BACKEND_URL } from "../constants.js";
 import { v4 as uuidv4 } from "uuid";
+
+const { REACT_APP_BACKEND_URL } = process.env;
 
 function MyTodosHeroSection() {
   const [todos, setTodos] = useState("");
   const showTodo = async () => {
-    // console.log(BACKEND_URL);
-    let { data } = await axios.get(`${BACKEND_URL}/gettodo`);
+    // console.log( REACT_APP_BACKEND_URL);
+    let { data } = await axios.get(`${REACT_APP_BACKEND_URL}/gettodo`);
     // console.log(data, data.todo);
     setTodos(data.todo);
   };
@@ -28,7 +29,7 @@ function MyTodosHeroSection() {
       tasks: todoTasks,
     };
 
-    await axios.put(`${BACKEND_URL}/edittodo/${id}`, data);
+    await axios.put(`${REACT_APP_BACKEND_URL}/edittodo/${id}`, data);
     // console.log(response);
     showTodo();
   };
@@ -44,7 +45,7 @@ function MyTodosHeroSection() {
       tasks: todoTasks,
     };
 
-    await axios.put(`${BACKEND_URL}/addtaskonly/${id}`, data);
+    await axios.put(`${REACT_APP_BACKEND_URL}/addtaskonly/${id}`, data);
     showTodo();
   };
   const editTitle = async (id) => {
@@ -56,12 +57,12 @@ function MyTodosHeroSection() {
     let data = {
       title: todoTitle,
     };
-    await axios.put(`${BACKEND_URL}/edittitleonly/${id}`, data);
+    await axios.put(`${REACT_APP_BACKEND_URL}/edittitleonly/${id}`, data);
     showTodo();
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`${BACKEND_URL}/deletetodo/${id}`);
+    await axios.delete(`${REACT_APP_BACKEND_URL}/deletetodo/${id}`);
     alert("Todo Deleted.");
     showTodo();
   };

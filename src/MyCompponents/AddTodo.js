@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { BACKEND_URL } from "../constants.js";
+
+const { REACT_APP_BACKEND_URL } = process.env;
 
 function AddTodo() {
   const [title, setTitle] = useState("");
@@ -29,7 +30,7 @@ function AddTodo() {
     };
 
     const [, error] = await handlePromise(
-      axios.post(`${BACKEND_URL}/addtodo`, todo)
+      axios.post(`${REACT_APP_BACKEND_URL}/addtodo`, todo)
     );
     // console.log(data, error);
     if (!error) {
