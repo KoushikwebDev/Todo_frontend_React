@@ -66,8 +66,8 @@ function MyTodosHeroSection() {
   };
 
   const deleteTodo = async (id) => {
-    let confirmValue = confirm("Do you want to delete it ?");
-    if (confirmValue) {
+    let confirmValue = prompt('Type "delete" to delete this todo.');
+    if (confirmValue == "delete") {
       await axios.delete(`${REACT_APP_BACKEND_URL}/deletetodo/${id}`);
       showTodo();
       alert("Todo Deleted.");
