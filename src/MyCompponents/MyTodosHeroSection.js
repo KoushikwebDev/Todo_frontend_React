@@ -66,9 +66,12 @@ function MyTodosHeroSection() {
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`${REACT_APP_BACKEND_URL}/deletetodo/${id}`);
-    alert("Todo Deleted.");
-    showTodo();
+    let confirmValue = confirm("Do you want to delete it ?");
+    if (confirmValue) {
+      await axios.delete(`${REACT_APP_BACKEND_URL}/deletetodo/${id}`);
+      showTodo();
+      alert("Todo Deleted.");
+    }
   };
 
   return (
